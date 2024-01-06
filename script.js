@@ -88,63 +88,122 @@ var upperCasedCharacters = [
   'Z'
 ];
 
+//declaring global variables to be used in the functions
+var choiceLength=0;
+var choiceLowerCase=false;
+var choiceUpperCase=false;
+var choiceNumeric=false;
+var choiceSpecialCharacter=false;
+
 //Following section is for employee to make choices for password
 //User Prompts to make choices for the character types
 
 
 // Function to prompt user for password options
 function getPasswordOptions() {
-  var choiceLength=parseInt(prompt("Please enter a number between 8 to 128 for your password length "));
-if(choiceLength<8||choiceLength>128)
-{
-  alert("Please enter a value between 8-128");
-  return;
-}
+    choiceLength=parseInt(prompt("Please enter a number between 8 to 128 for your password length "));
+   //An alert for user if they do not enter the expected length for password
+    if(choiceLength<8||choiceLength>128)
+    {
+      alert("Please enter a value between 8-128");
+      return false;
+    }
+    // User meets the correct length requirements and are able to chose the character combinations
+    //for password generation
+      choiceLowerCase=confirm("Would you like to include 'lower case' in your password?"
+                              +"\n Click OK if Yes or Cancel if No");
 
-else{
+      choiceUpperCase=confirm("Would you like to include 'upper case' in your password?"
+                              +"\n Click OK if Yes or Cancel if No");
 
-var choiceLowerCase=confirm("Would you like to include 'lower case' in your password?"
-+"\n Click OK if Yes or Cancel if No");
+      choiceNumeric=confirm("Would you like to include 'number' in your password?"
+                              +"\n Click OK if Yes or Cancel if No");
 
-var choiceUpperCase=confirm("Would you like to include 'upper case' in your password?"
-+"\n Click OK if Yes or Cancel if No");
-
-var choiceNumeric=confirm("Would you like to include 'number' in your password?"
-+"\n Click OK if Yes or Cancel if No");
-
-var choiceSpecialCharacter=confirm("Would you like to include 'special character' in your password?"
-+"\n Click OK if Yes or Cancel if No");
-}
-
- if((choiceLowerCase===false && choiceUpperCase===false && choiceNumeric===false && choiceSpecialCharacter===false))
-  {
-  
-  alert("You need to choose OK for at lease one character type!");
-  return;
+      choiceSpecialCharacter=confirm("Would you like to include 'special character' in your password?"
+                              +"\n Click OK if Yes or Cancel if No");
+    
+    //Logging user input for password length and character choices
+      console.log(`Password length:${choiceLength}`);
+      console.log(`Lowercase: ${choiceLowerCase}`);
+      console.log(`Uppercase: ${choiceUpperCase}`);
+      console.log(`Numeric: ${choiceNumeric}`);
+      console.log(`Special Character: ${choiceSpecialCharacter}`);
+    
+    // An alert for user if they didn't choose any character type for password generation
+    if((choiceLowerCase===false && choiceUpperCase===false && choiceNumeric===false && choiceSpecialCharacter===false))
+    {
+      alert("You need to choose OK for at lease one character type!");
+      return false;
+    }
+    return{
+      choiceLength:choiceLength,
+      choiceLowerCase:choiceLowerCase,
+      choiceUpperCase:choiceUpperCase,
+      choiceNumeric:choiceNumeric,
+      choiceSpecialCharacter:choiceSpecialCharacter,
+    };
   }
-  //Logging the user input for password length and character choices
-  
-  else {
-    console.log(`Password length:${choiceLength}`);
-    console.log(`Lowercase: ${choiceLowerCase}`);
-    console.log(`Uppercase: ${choiceUpperCase}`);
-    console.log(`Numeric: ${choiceNumeric}`);
-    console.log(`Special Character: ${choiceSpecialCharacter}`);
-    return;
-  }
 
-}
 
-getPasswordOptions();
+
 // Function for getting a random element from an array
 function getRandom(arr) {
-
+  console.log(arr.length);
+  var randomGen=Math.floor(Math.random()*arr.length);
+  return arr[randomGen];
 }
+
 
 // Function to generate password with user input
-function generatePassword() {
 
+function generatePassword() {
+  var passwordOption=getPasswordOptions();
+  if(!passwordOption){
+    return "";
+  }
+  var password="";
+  //Ensuring the following conditions are checked as per user choices for characters
+for (var i = 0; i < passwordOption.choiceLength; i++) {
+  console.log("test without check")
+
+  if(passwordOption.choiceLowerCase){
+    //password += getRandom(lowerCasedCharacters);
+    var lcRandom=getRandom(lowerCasedCharacters);
+    password=password.concat(lcRandom);   
+   //password+=lcRandom; 
+   console.log("test with lower check")
+ } 
+
+ if(passwordOption.choiceUpperCase){
+  // password += getRandom(upperCasedCharacters);
+   var ucRandom=getRandom(upperCasedCharacters);
+   //  password+=ucRandom;
+    password=password.concat(ucRandom);
+     console.log("test with upper check")
+ }
+
+ if(passwordOption.choiceNumeric){
+   //password += getRandom(numericCharacters);
+   var nmRandom=getRandom(numericCharacters);
+    // password+=nmRandom;
+    password=password.concat(nmRandom);
+     console.log("test with number check")
+    
+ 
+ }
+
+ if(passwordOption.choiceSpecialCharacter){
+   password += getRandom(specialCharacters);
+   var spRandom=getRandom(specialCharacters);
+    // password+=spRandom;
+     password=password.concat(spRandom);
+     console.log("test with special check")
+ }
 }
+   console.log(`Your password is ${password}`);
+   return password;
+} 
+
 
 // Get references to the #generate element
 var generateBtn = document.querySelector('#generate');
@@ -158,5 +217,5 @@ function writePassword() {
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener('click',getPasswordOptions);
-//writePassword
+generateBtn.addEventListener('click',writePassword);
+//getPasswordOptions
