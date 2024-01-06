@@ -146,7 +146,6 @@ function getPasswordOptions() {
 
 // Function for getting a random element from an array
 function getRandom(arr) {
-  console.log(arr.length);
   var randomGen=Math.floor(Math.random()*arr.length);
   return arr[randomGen];
 }
