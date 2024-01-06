@@ -37,7 +37,9 @@ Below is the screenshot for how result appears after following above steps.
 
 ## Credits
 
-Reviewing the examples in the calss materials, TA structured after class sessions were helpful aid to this challenge.  A massive thank you to the TAs after class as they helped me with the concepts and debugging codes when I got stuck.
+Reviewing the examples in the calss materials, TA structured after class sessions were helpful aid to this challenge.  
+The TAs after class helped me with the concepts and debugging codes when I got stuck.
+Xpert learning assistant was helpful outside office hours.
 
 ## License
 
