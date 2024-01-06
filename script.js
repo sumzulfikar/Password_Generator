@@ -144,8 +144,6 @@ function getPasswordOptions() {
     };
   }
 
-
-
 // Function for getting a random element from an array
 function getRandom(arr) {
   console.log(arr.length);
@@ -162,48 +160,34 @@ function generatePassword() {
     return "";
   }
   var password="";
-  //Ensuring the following conditions are checked as per user choices for characters
-for (var i = 0; i < passwordOption.choiceLength; i++) {
-  console.log("test without check")
 
+  //Ensuring the following conditions are checked as per user choices for length and characters
+while (password.length<passwordOption.choiceLength) {
   if(passwordOption.choiceLowerCase){
-    //password += getRandom(lowerCasedCharacters);
     var lcRandom=getRandom(lowerCasedCharacters);
     password=password.concat(lcRandom);   
-   //password+=lcRandom; 
-   console.log("test with lower check")
- } 
+  } 
 
- if(passwordOption.choiceUpperCase){
-  // password += getRandom(upperCasedCharacters);
-   var ucRandom=getRandom(upperCasedCharacters);
-   //  password+=ucRandom;
+  if(passwordOption.choiceUpperCase){
+    var ucRandom=getRandom(upperCasedCharacters);
     password=password.concat(ucRandom);
-     console.log("test with upper check")
- }
+  }
 
- if(passwordOption.choiceNumeric){
-   //password += getRandom(numericCharacters);
-   var nmRandom=getRandom(numericCharacters);
-    // password+=nmRandom;
+  if(passwordOption.choiceNumeric){
+    var nmRandom=getRandom(numericCharacters);
     password=password.concat(nmRandom);
-     console.log("test with number check")
-    
- 
- }
+  }
 
  if(passwordOption.choiceSpecialCharacter){
-   password += getRandom(specialCharacters);
-   var spRandom=getRandom(specialCharacters);
-    // password+=spRandom;
-     password=password.concat(spRandom);
-     console.log("test with special check")
- }
+    var spRandom=getRandom(specialCharacters);
+    password=password.concat(spRandom);
+  }
 }
-   console.log(`Your password is ${password}`);
-   return password;
+//Trimming password to the password length chosen by user
+  password=password.slice(0,passwordOption.choiceLength);
+  console.log(`Your password is ${password}`);
+  return password;
 } 
-
 
 // Get references to the #generate element
 var generateBtn = document.querySelector('#generate');
@@ -218,4 +202,3 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener('click',writePassword);
-//getPasswordOptions
