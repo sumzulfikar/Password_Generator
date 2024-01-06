@@ -102,8 +102,8 @@ var choiceSpecialCharacter=false;
 // Function to prompt user for password options
 function getPasswordOptions() {
     choiceLength=parseInt(prompt("Please enter a number between 8 to 128 for your password length "));
-   //An alert for user if they do not enter the expected length for password
-    if(choiceLength<8||choiceLength>128)
+   //An alert for user if they do not enter the expected length for password or no value
+    if(choiceLength<8||choiceLength>128||isNaN(choiceLength))
     {
       alert("Please enter a value between 8-128");
       return false;
