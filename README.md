@@ -61,7 +61,7 @@ n/a
 
 Acceptance Criteria met:
 - Invalid input for password length alerts user to input a number between 8-128 for password length
-- If no character choices are entred by user the application alerts user of including at least one character type
+- If no character choices are entered by user the application alerts user of including at least one character type
 - Based on user choice characters are randomised
 - A random password is generated with user choices with the correct length chosen by user
 
