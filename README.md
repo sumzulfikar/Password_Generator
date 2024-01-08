@@ -29,7 +29,7 @@ Below is the screenshot for the password generating application
 - Click Generate Password button
 - The user will receive a popup asking to enter a number between 8-128
 - There will a series of popups asking user to confirm which character type they would like to include for the password
-- Once completed the application will show the passowrd generated in Generate a Password in the Application.
+- Once completed the application will show the password generated in Generate a Password in the Application.
 - To view what input the user provided Right click on the application and select Inspect. The console log view lists the choices made by user and the password generated.
 ### Result
 Below is the screenshot for how result appears after following above steps.
