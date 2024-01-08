@@ -37,7 +37,7 @@ Below is the screenshot for how result appears after following above steps.
 
 ## Credits
 
-Reviewing the examples in the calss materials, TA structured after class sessions were helpful aid to this challenge.  
+Reviewing the examples in the class materials, TA structured after class sessions were helpful aid to this challenge.  
 The TAs after class helped me with the concepts and debugging codes when I got stuck.
 Xpert learning assistant was helpful outside office hours.
 
