@@ -4,7 +4,7 @@ An application that an employee can use to generate a random password based on c
 
 ## Description
 
-Allowing an employee to user the application to choose password length and a choice of characters they wish to use and  generate a random password based on criteria that they have selected. 
+Allowing an employee to use the application to choose password length and a choice of characters they wish to use and  generate a random password based on criteria that they have selected. 
 The user can choose betwen 8-128 character password with a various 
 combination of character types such as upper case, lowercase, numbers and special characters.
 
